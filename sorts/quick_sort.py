@@ -1,8 +1,11 @@
 from random import randint
 
 
-def quick_sort(arr, start, end):
-    if end-start > 0:
+def quick_sort(arr, start=0, end=None):
+    if end == None:
+        end = len(arr) - 1
+
+    if end > start:
         piv = partition(arr, start, end)
 
         quick_sort(arr, start, piv-1)
@@ -19,7 +22,7 @@ def partition(arr, start, end):
     ext = start
 
     for i in range(start, end):
-        if arr[i] > arr[piv]:
+        if arr[i] < arr[piv]:
             arr[ext], arr[i] = arr[i], arr[ext]
             ext += 1
 
